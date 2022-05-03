@@ -72,3 +72,17 @@
     border-radius: 1px;
     background: rgb(223, 231, 237);
 }
+
+.percent-box {
+    height: 22px;
+    display: flex;
+    padding-left: 10%;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+}
+
+.percent-number {
+    color: #fff;
+    margin-right: 15px;
+}

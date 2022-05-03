@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Stage, Layer, Image } from "react-konva";
 import useImage from "use-image";
 import Konva from "konva";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { ZOOM_VALUE_CHANGE } from "../../store/actions";
 
 const Konvas = ({ height, width }) => {
+    const dispatch = useDispatch();
     const { imgUrl, imgName, image: img } = useSelector((state) => state.img);
     const [image, setImage] = useState()
     const imageRef = React.useRef();
@@ -57,6 +59,10 @@ const Konvas = ({ height, width }) => {
         const newScale =
             e.evt.deltaY < 0 ? oldScale * scaleBy : oldScale / scaleBy;
         setScale(newScale);
+        dispatch({
+            type: ZOOM_VALUE_CHANGE,
+            percent: Math.round(newScale * 100)
+        });
         setCoordinates({
             x:
                 -(mousePointTo.x - stage.getPointerPosition().x / newScale) *

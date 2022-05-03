@@ -6,6 +6,7 @@ import fnvalueReducer from './fnvalueReducer';
 import flipReducer from './flipReducer';
 import imageReducer from "./imageReducer";
 import dialogReducer from "./dialogReducer";
+import zoomReducer from "./zoomReducer";
 
 const reducer = combineReducers({
     tab: tabReducer,
@@ -14,7 +15,8 @@ const reducer = combineReducers({
     value: fnvalueReducer,
     flip: flipReducer,
     img: imageReducer,
-    dialog: dialogReducer
+    dialog: dialogReducer,
+    zoom: zoomReducer
 });
 
 export default reducer;

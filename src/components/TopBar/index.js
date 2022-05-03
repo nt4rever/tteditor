@@ -1,11 +1,13 @@
 import React, { useRef } from "react";
 import "./TopBar.css";
-import { useDispatch } from 'react-redux';
-import { FINETUNE_VALUE_CHANGE, IMG_UPLOAD } from './../../store/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import Slider from '@mui/material/Slider';
+import { FINETUNE_VALUE_CHANGE, IMG_UPLOAD, ZOOM_VALUE_CHANGE } from './../../store/actions';
 
 const TopBar = () => {
     const fileRef = useRef(null);
     const dispatch = useDispatch()
+    const { percent } = useSelector((state) => state.zoom);
 
     const convertBase64 = (file) => {
         return new Promise((resolve, reject) => {
@@ -45,6 +47,22 @@ const TopBar = () => {
 
     return (
         <div className="topbar">
+            <div className="percent-box">
+                <p className="percent-number">{percent}%</p>
+                <Slider
+                    size="small"
+                    min={0}
+                    max={200}
+                    defaultValue={100}
+                    value={percent}
+                    disabled 
+                    aria-label="Small"
+                    sx={{
+                        width: '200px',
+                        color: '#fff'
+                    }}
+                />
+            </div>
             <div className="button-upload" onClick={handleUploadClick}>
                 <span>Upload</span>
                 <input
