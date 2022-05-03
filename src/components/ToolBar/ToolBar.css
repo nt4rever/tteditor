@@ -1,0 +1,129 @@
+.item {
+    padding: 5px;
+}
+
+.item > div {
+    display: inline-flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    margin: 0px 4px;
+    padding: 2px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.item > div > img {
+    position: relative;
+    user-select: none;
+    width: 80px;
+    height: 55px;
+    object-fit: cover;
+}
+
+.item > div > label {
+    margin-top: 6px;
+    font-size: 11px;
+    line-height: 12px;
+}
+
+.item > div[aria-selected="true"] > img {
+    padding: 1px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 2px;
+}
+
+.item > div[aria-selected="true"] > label {
+    color: rgb(255, 255, 255);
+}
+
+.slick-prev {
+    z-index: 100;
+    left: -25 !important;
+}
+
+.slick-next {
+    z-index: 100;
+    right: 0 !important;
+}
+
+.slick-prev::before,
+.slick-next::before {
+    color: rgb(182, 182, 182);
+}
+
+.toolbar-options {
+    position: relative;
+    width: 100%;
+    transition: max-height 100ms ease-in-out 0s;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    max-height: 40px;
+    margin: 0px auto 8px;
+    z-index: 100;
+}
+
+.finetune-wrapper {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    overflow-x: auto;
+}
+
+.finetune-item {
+    display: flex;
+    border-radius: 4px;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 8px;
+    cursor: pointer;
+    background-color: #3f3f3f;
+}
+
+.finetune-item > svg {
+    width: 18px;
+    height: 18px;
+}
+
+.finetune-item > label {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(118, 129, 132);
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 14px;
+    cursor: pointer;
+    user-select: none;
+    margin-left: 6px;
+}
+
+.finetune-item:not(:last-child) {
+    margin-right: 8px;
+}
+
+.finetune-item:hover {
+    background: rgb(236, 243, 255);
+    transition: 0.2s;
+}
+
+.finetune-item[aria-selected="true"] {
+    background: rgb(236, 243, 255);
+    color: rgb(73, 88, 188);
+}
+
+.config-filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding-right: 20px;
+}

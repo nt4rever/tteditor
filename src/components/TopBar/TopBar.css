@@ -1,0 +1,74 @@
+.topbar {
+    padding: 12px 12px 0px;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: end;
+}
+
+.button-download {
+    height: 22px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-right: 4px;
+    background-color: rgb(104, 121, 235);
+    border-radius: 2px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.button-download > span {
+    font-size: 12px !important;
+    line-height: 14px !important;
+    padding: 4px 8px;
+    user-select: none;
+}
+
+.button-upload {
+    height: 22px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-right: 4px;
+    background-color: rgb(81, 216, 193);
+    border-radius: 2px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.button-upload > span {
+    font-size: 12px !important;
+    line-height: 14px !important;
+    padding: 4px 8px;
+    user-select: none;
+}
+
+.topbar-center-options {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center
+}
+
+.topbar-center-options > label {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(118, 129, 132);
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.iQiXor{
+    display: inline-block;
+    height: 11px;
+    width: 1px;
+    border-radius: 1px;
+    background: rgb(223, 231, 237);
+}

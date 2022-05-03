@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 90%;
+    max-height: 90%;
+    width: 80%;
+    max-width: 80%;
+    overflow: auto;
+    position: relative;
+    background: #606060;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-radius: 5px;
+}
+
+.main {
+    display: flex;
+    align-items: start;
+    width: 100%;
+    height: calc(100% - 35px);
+    padding: 10px;
+    /* border: solid .2px; */
+    background-color: #606060;
+}

@@ -1,0 +1,38 @@
+.sideBar {
+    padding: 0px 12px 12px 0px;
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+.sideBar-item {
+    width: 67px;
+    height: 62px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    background: #3f3f3f;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.sideBar-item > label {
+    cursor: pointer;
+    margin-top: 6px;
+    font-size: 11px;
+    line-height: 12px;
+    user-select: none;
+}
+
+.sideBar-item:hover,
+.sideBar-item[aria-selected=true] {
+    background-color: #fff;
+    color: #000;
+    transition: 0.2s;
+}
+
+.imageUpload {
+    display: none;
+}
