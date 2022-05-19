@@ -10,7 +10,7 @@ const Konvas = ({ height, width }) => {
     const { imgUrl, imgName, image: img } = useSelector((state) => state.img);
     const [image, setImage] = useState()
     const imageRef = React.useRef();
-    const { brighten, contrast, blur } = useSelector((state) => state.value);
+    const { brighten, contrast, blur, hue, saturation, value } = useSelector((state) => state.value);
     const { flipx, flipy } = useSelector((state) => state.flip);
     const [coordinates, setCoordinates] = useState({
         x: width / 2,
@@ -24,12 +24,17 @@ const Konvas = ({ height, width }) => {
 
     useEffect(() => {
         const imgLoad = new window.Image();
-        imgLoad.src = img
-        imgLoad.crossOrigin = 'anonymous'
+        imgLoad.src = img;
+        imgLoad.crossOrigin = "anonymous";
         imgLoad.onload = () => {
-            setImage(imgLoad)
-        }
-    }, [img])
+            setImage(imgLoad);
+            var scale1 = Math.min(width / imgLoad?.width, height / imgLoad?.height);
+            setImageAttr({
+                width: imgLoad?.width * scale1,
+                height: imgLoad?.height * scale1,
+            });
+        };
+    }, [img, width, height]);
 
     useEffect(() => {
         var scale1 = Math.min(width / image?.width, height / image?.height);
@@ -84,7 +89,7 @@ const Konvas = ({ height, width }) => {
             onWheel={handleWheel}
         >
             <Layer>
-                <Image
+            <Image
                     draggable
                     ref={imageRef}
                     scaleY={flipx ? -1 : 1}
@@ -100,10 +105,14 @@ const Konvas = ({ height, width }) => {
                         Konva.Filters.Brighten,
                         Konva.Filters.Contrast,
                         Konva.Filters.Blur,
+                        Konva.Filters.HSV
                     ]}
                     blurRadius={blur}
                     brightness={brighten}
                     contrast={contrast}
+                    hue={hue}
+                    saturation={saturation}
+                    value={value}
                 />
             </Layer>
         </Stage>

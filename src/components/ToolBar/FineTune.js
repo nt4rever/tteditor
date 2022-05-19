@@ -3,6 +3,7 @@ import {
     SVGBlur,
     SVGBrightness,
     SVGContrast,
+    SVGHSV,
     SVGWarmth,
 } from "./../../utils/svg";
 import Box from "@mui/material/Box";
@@ -12,6 +13,7 @@ import ItemFineTune from "./ItemFineTune.js";
 import { Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { FINETUNE_CHANGE, FINETUNE_VALUE_CHANGE } from "./../../store/actions";
+import HSV from "./HSV.js";
 
 const finetunes = [
     {
@@ -29,6 +31,11 @@ const finetunes = [
         min: -100,
         max: 100,
         step: 5,
+    },
+    {
+        icon: <SVGHSV />,
+        tool: "hsv",
+        name: "HSV",
     },
     {
         icon: <SVGBlur />,
@@ -93,7 +100,8 @@ const FineTune = () => {
             <div className="toolbar-options">
                 {finetunes.map(
                     (item) =>
-                        item.tool === finetune && (
+                        item.tool === finetune &&
+                        item.tool !== "hsv" && (
                             <Box key={item.tool} sx={{ width: 250 }}>
                                 <Stack
                                     spacing={2}
@@ -128,6 +136,7 @@ const FineTune = () => {
                             </Box>
                         )
                 )}
+                {finetune === "hsv" && <HSV />}
             </div>
             <div className="finetune-wrapper">
                 {finetunes.map((item) => (

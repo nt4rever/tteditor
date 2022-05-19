@@ -10,8 +10,9 @@ const Main = () => {
         <div className="container">
             <TopBar />
             <div className="main">
-                <SideBar />
+                
                 <Canvas />
+                <SideBar />
             </div>
         </div>
     );

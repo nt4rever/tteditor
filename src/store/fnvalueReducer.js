@@ -3,7 +3,10 @@ import { FINETUNE_VALUE_CHANGE } from "./actions";
 const initialState = {
     brighten: 0,
     contrast: 0,
-    blur: 0
+    blur: 0,
+    hue: 0,
+    saturation: 0,
+    value: 0
 };
 
 const fnvalueReducer = (state = initialState, action) => {
@@ -13,7 +16,10 @@ const fnvalueReducer = (state = initialState, action) => {
                 ...state,
                 brighten: action.brighten ?? state.brighten,
                 contrast: action.contrast ?? state.contrast,
-                blur: action.blur ?? state.blur
+                blur: action.blur ?? state.blur,
+                hue: action.hue ?? state.hue,
+                saturation: action.saturation ?? state.saturation,
+                value: action.value ?? state.value
             };
         default:
             return state;

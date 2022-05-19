@@ -127,3 +127,21 @@
     height: 100%;
     padding-right: 20px;
 }
+
+.MuiSlider-markLabel {
+    top: 0 !important;
+    /* position: initial!important; */
+}
+
+.MuiSlider-markLabel[style="left: 0%;"] {
+    left: 5% !important;
+}
+
+.MuiSlider-markLabel[style="left: 100%;"],
+.MuiSlider-markLabel[style="left: 259%;"] {
+    left: 95% !important;
+}
+
+.MuiSlider-sizeSmall {
+    padding: 0 !important;
+}
