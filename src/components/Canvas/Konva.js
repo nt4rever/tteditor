@@ -5,11 +5,10 @@ import Konva from "konva";
 import { useDispatch, useSelector } from "react-redux";
 import { ZOOM_VALUE_CHANGE } from "../../store/actions";
 
-const Konvas = ({ height, width }) => {
+const Konvas = ({ imageRef, layerEl, height, width }) => {
     const dispatch = useDispatch();
     const { imgUrl, imgName, image: img } = useSelector((state) => state.img);
     const [image, setImage] = useState()
-    const imageRef = React.useRef();
     const { brighten, contrast, blur, hue, saturation, value } = useSelector((state) => state.value);
     const { flipx, flipy } = useSelector((state) => state.flip);
     const [coordinates, setCoordinates] = useState({
@@ -88,7 +87,7 @@ const Konvas = ({ height, width }) => {
             scaleY={scale}
             onWheel={handleWheel}
         >
-            <Layer>
+            <Layer ref={layerEl}>
             <Image
                     draggable
                     ref={imageRef}

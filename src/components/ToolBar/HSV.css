@@ -1,0 +1,17 @@
+.MuiSlider-markLabel {
+    top: 10 !important;
+    /* position: initial!important; */
+}
+
+.MuiSlider-markLabel[style="left: 0%;"] {
+    left: 0% !important;
+}
+
+.MuiSlider-markLabel[style="left: 100%;"],
+.MuiSlider-markLabel[style="left: 259%;"] {
+    left: 100% !important;
+}
+
+.MuiSlider-sizeSmall {
+    padding: 0 !important;
+}

@@ -6,6 +6,7 @@ import { Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { FINETUNE_VALUE_CHANGE } from "../../store/actions.js";
 import { useSelector } from "react-redux";
+import './HSV.css'
 
 const HSV = () => {
     const dispatch = useDispatch();

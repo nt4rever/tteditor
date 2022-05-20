@@ -7,7 +7,7 @@ import FineTune from "../ToolBar/FineTune.js";
 import { useSelector } from "react-redux";
 import Adjust from "./../ToolBar/Adjust";
 
-const Canvas = ({ imageUrl, setImageUrl, file, setFile }) => {
+const Canvas = ({ imageRef, layerEl }) => {
     const canvasRef = useRef();
     const [canvas, setCanvas] = useState({ height: 0, width: 0 });
 
@@ -27,23 +27,17 @@ const Canvas = ({ imageUrl, setImageUrl, file, setFile }) => {
             <div ref={canvasRef} className="canvas-container">
                 {isLoading && <Loading />}
                 <Konvas
-                    imageUrl={imageUrl}
+                    imageRef={imageRef}
+                    layerEl={layerEl}
                     height={canvas.height}
                     width={canvas.width}
                 />
             </div>
             <div className="tool-bar">
-                {tab === "filter" && (
-                    <Filters
-                        setImageUrl={setImageUrl}
-                        file={file}
-                        setFile={setFile}
-                        setIsLoading={setIsLoading}
-                    />
-                )}
-
+                {tab === "filter" && <Filters setIsLoading={setIsLoading} />}
                 {tab === "finetune" && <FineTune />}
                 {tab === "adjust" && <Adjust />}
+                {/* {tab === "draw" && <Draw />} */}
             </div>
         </div>
     );
