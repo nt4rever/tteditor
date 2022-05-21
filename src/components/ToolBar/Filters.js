@@ -56,9 +56,51 @@ const filterItems = [
         name: "Sobel Y",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
     },
+    {
+        id: 7,
+        filter: "HDR",
+        path: "/special/HDR",
+        name: "HDR",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
+    },
+    {
+        id: 8,
+        filter: "summer",
+        path: "/special/summer",
+        name: "Summer",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
+    },
+    {
+        id: 9,
+        filter: "winner",
+        path: "/special/winner",
+        name: "Winner",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
+    },
+    {
+        id: 10,
+        filter: "sharpen",
+        path: "/special/sharpen",
+        name: "Sharpen",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
+    },
+    {
+        id: 11,
+        filter: "sepia",
+        path: "/special/sepia",
+        name: "Sepia",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
+    },
+    {
+        id: 11,
+        filter: "pencil_sketch_grey",
+        path: "/special/pencil-sketch-grey",
+        name: "Pencil sketch grey",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
+    },
 ];
 
-const filters = ["hist", "blur", "laplacian", "sobelx","sobely"]
+const filters = ["hist", "blur", "laplacian", "sobelx", "sobely", "HDR", "summer", "winner", "sharpen", "sepia", "pencil_sketch_grey"]
 
 const settings = {
     dots: false,
