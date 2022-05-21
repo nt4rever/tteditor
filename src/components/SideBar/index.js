@@ -1,7 +1,7 @@
 import React from "react";
 import TabItem from "./TabItem.js";
 import "./SideBar.css";
-import { SVGAdjust, SVGFinetune, SVGFilter, SVGDraw } from "../../utils/svg.js";
+import { SVGAdjust, SVGFinetune, SVGFilter, SVGDraw, SVGRestore, SVGOther } from "../../utils/svg.js";
 import { useSelector, useDispatch } from "react-redux";
 import { FINETUNE_VALUE_CHANGE } from "./../../store/actions";
 import RefreshIcon from '@mui/icons-material/Refresh';
@@ -18,14 +18,24 @@ const tabs = [
         name: "Finetune",
     },
     {
+        icon: <SVGDraw />,
+        tab: "draw",
+        name: "Draws",
+    },
+    {
         icon: <SVGFilter />,
         tab: "filter",
         name: "Filter",
     },
     {
-        icon: <SVGDraw />,
-        tab: "draw",
-        name: "Draws",
+        icon: <SVGRestore />,
+        tab: "segment",
+        name: "S & R...",
+    },
+    {
+        icon: <SVGOther />,
+        tab: "other",
+        name: "Other",
     },
 ];
 

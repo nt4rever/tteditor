@@ -23,42 +23,98 @@ const filterItems = [
     },
     {
         id: 2,
-        filter: "blur",
-        path: "/filter/gaussian-blur",
-        name: "Blur",
+        filter: "graph-cut",
+        name: "Graph Cut",
+        path: "/segment/graph-cut",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
     },
     {
         id: 3,
-        filter: "hist",
-        path: "/point/hist",
-        name: "Histogram",
+        filter: "meanshift",
+        name: "Meanshift",
+        path: "/segment/meanshift",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
     },
     {
         id: 4,
-        filter: "laplacian",
-        path: "/filter/laplacian",
-        name: "Laplacian",
+        filter: "kmean",
+        name: "Kmean",
+        path: "/segment/kmean",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
     },
     {
         id: 5,
-        filter: "sobelx",
-        path: "/filter/sobelx",
-        name: "Sobel X",
+        filter: "tb-so-hoc",
+        name: "TB So Hoc",
+        path: "/restoration/tb-so-hoc",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
     },
     {
         id: 6,
-        filter: "sobely",
-        path: "/filter/sobely",
-        name: "Sobel Y",
+        filter: "tb-hinh-hoc",
+        name: "TB Hinh Hoc",
+        path: "/restoration/tb-hinh-hoc",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
+    },
+    {
+        id: 7,
+        filter: "tb-harmonic",
+        name: "Harmonic",
+        path: "/restoration/tb-harmonic",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
+    },
+    {
+        id: 8,
+        filter: "tb-contraharmonic",
+        name: "Contraharmonic",
+        path: "/restoration/tb-contraharmonic",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
+    },
+    {
+        id: 9,
+        filter: "loc-trung-vi",
+        name: "Loc Trung Vi",
+        path: "/restoration/loc-trung-vi",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
+    },
+    {
+        id: 10,
+        filter: "loc-min",
+        name: "Min",
+        path: "/restoration/loc-min",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
+    },
+    {
+        id: 11,
+        filter: "loc-max",
+        name: "Max",
+        path: "/restoration/loc-max",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
+    },
+    {
+        id: 12,
+        filter: "loc-midpoint",
+        name: "Midpoint",
+        path: "/restoration/loc-midpoint",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
+    },
+    {
+        id: 13,
+        filter: "loc-tuong-thich",
+        name: "Loc Tuong Thich",
+        path: "/restoration/loc-tuong-thich",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
+    },
+    {
+        id: 14,
+        filter: "loc-alpha",
+        name: "Alpha",
+        path: "/restoration/loc-alpha",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
     },
 ];
 
-const filters = ["hist", "blur", "laplacian", "sobelx","sobely"]
+const segment = ["graph-cut", "kmean", "meanshift", "tb-so-hoc", "tb-hinh-hoc", "tb-harmonic", "tb-contraharmonic", "loc-trung-vi", "loc-min", "loc-max", "loc-midpoint", "loc-alpha", "loc-tuong-thich"];
 
 const settings = {
     dots: false,
@@ -68,7 +124,7 @@ const settings = {
     slidesToScroll: 1,
 };
 
-const ToolBar = ({ setIsLoading }) => {
+const Segment = ({ setIsLoading }) => {
     const dispatch = useDispatch();
     const { filter } = useSelector((state) => state.filter);
     const dialog = useSelector((state) => state.dialog)
@@ -100,7 +156,7 @@ const ToolBar = ({ setIsLoading }) => {
                     image: imgUrl,
                 });
                 setIsLoading(false);
-            } else if (filters.includes(filter)) {
+            } else if (segment.includes(filter)) {
                 let p = filterItems.find(x => x.filter === filter).path
                 await API.post(p, formData).then((response) => {
                     if (response.status === 200) {
@@ -127,7 +183,7 @@ const ToolBar = ({ setIsLoading }) => {
 
     return (
         <>
-            <Grid container spacing={3}>
+            <Grid container spacing={2}>
                 <Grid item xs={1}>
                     <div className="config-filter">
                         <IconButton onClick={handleClick} sx={{
@@ -156,4 +212,4 @@ const ToolBar = ({ setIsLoading }) => {
     );
 };
 
-export default ToolBar;
+export default Segment;

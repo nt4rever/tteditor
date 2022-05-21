@@ -23,52 +23,53 @@ const filterItems = [
     },
     {
         id: 2,
-        filter: "blur",
-        path: "/filter/gaussian-blur",
-        name: "Blur",
+        filter: "reverse",
+        name: "Reverse",
+        path: "/point/reverse",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
     },
     {
         id: 3,
-        filter: "hist",
-        path: "/point/hist",
-        name: "Histogram",
+        filter: "threshold",
+        name: "Threshold",
+        path: "/point/threshold",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
     },
     {
         id: 4,
-        filter: "laplacian",
-        path: "/filter/laplacian",
-        name: "Laplacian",
+        filter: "log",
+        name: "Log",
+        path: "/point/log",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
     },
     {
         id: 5,
-        filter: "sobelx",
-        path: "/filter/sobelx",
-        name: "Sobel X",
+        filter: "log",
+        name: "Log",
+        path: "/point/log",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
     },
     {
         id: 6,
-        filter: "sobely",
-        path: "/filter/sobely",
-        name: "Sobel Y",
+        filter: "log",
+        name: "Log",
+        path: "/point/log",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
     },
+    
 ];
 
-const filters = ["hist", "blur", "laplacian", "sobelx","sobely"]
+const segment = ["reverse", "log", "threshold"];
 
 const settings = {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 6,
+    slidesToShow: 4,
     slidesToScroll: 1,
 };
 
-const ToolBar = ({ setIsLoading }) => {
+const Other = ({ setIsLoading }) => {
     const dispatch = useDispatch();
     const { filter } = useSelector((state) => state.filter);
     const dialog = useSelector((state) => state.dialog)
@@ -100,7 +101,7 @@ const ToolBar = ({ setIsLoading }) => {
                     image: imgUrl,
                 });
                 setIsLoading(false);
-            } else if (filters.includes(filter)) {
+            } else if (segment.includes(filter)) {
                 let p = filterItems.find(x => x.filter === filter).path
                 await API.post(p, formData).then((response) => {
                     if (response.status === 200) {
@@ -127,8 +128,8 @@ const ToolBar = ({ setIsLoading }) => {
 
     return (
         <>
-            <Grid container spacing={3}>
-                <Grid item xs={1}>
+            <Grid container spacing={2}>
+                <Grid item xs={3}>
                     <div className="config-filter">
                         <IconButton onClick={handleClick} sx={{
                             color: '#fff'
@@ -137,7 +138,7 @@ const ToolBar = ({ setIsLoading }) => {
                         </IconButton>
                     </div>
                 </Grid>
-                <Grid item xs={11}>
+                <Grid item xs={9}>
                     <Slider {...settings}>
                         {filterItems.map((item) => (
                             <Item
@@ -156,4 +157,4 @@ const ToolBar = ({ setIsLoading }) => {
     );
 };
 
-export default ToolBar;
+export default Other;
