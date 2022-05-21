@@ -6,7 +6,8 @@ const initialState = {
     blur: 0,
     hue: 0,
     saturation: 0,
-    value: 0
+    value: 0,
+    rotate: 0
 };
 
 const fnvalueReducer = (state = initialState, action) => {
@@ -19,7 +20,8 @@ const fnvalueReducer = (state = initialState, action) => {
                 blur: action.blur ?? state.blur,
                 hue: action.hue ?? state.hue,
                 saturation: action.saturation ?? state.saturation,
-                value: action.value ?? state.value
+                value: action.value ?? state.value,
+                rotate: action.rotate ?? state.rotate
             };
         default:
             return state;

@@ -36,3 +36,24 @@
 .imageUpload {
     display: none;
 }
+
+.reset-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reset {
+    width: 30px;
+    height: 30px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3f3f3f;
+}
+
+.reset:hover {
+    background-color: #fff;
+    transition: 0.2s;
+}

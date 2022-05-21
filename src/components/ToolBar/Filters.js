@@ -7,8 +7,8 @@ import "./ToolBar.css";
 import Item from "./ItemFilter.js";
 import { useDispatch, useSelector } from "react-redux";
 import { urlImage } from "../../store/constants.js";
-import { IMG_CHANGE } from "./../../store/actions";
-import { DIALOG_VALUE_CHANGE, DIALOG_STATUS_CHANGE } from '../../store/actions';
+import { IMG_CHANGE, FILTER_CHANGE } from "./../../store/actions";
+import { DIALOG_STATUS_CHANGE } from '../../store/actions';
 import IconButton from '@mui/material/IconButton';
 import DisplaySettingsIcon from '@mui/icons-material/DisplaySettings';
 import Grid from '@mui/material/Grid';
@@ -17,49 +17,49 @@ import Grid from '@mui/material/Grid';
 const filterItems = [
     {
         id: 1,
-        tool: "original",
+        filter: "original",
         name: "Original",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
     },
     {
         id: 2,
-        tool: "blur",
+        filter: "blur",
         name: "Blur",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
     },
     {
         id: 3,
-        tool: "hist",
+        filter: "hist",
         name: "Histogram",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
     },
     {
         id: 4,
-        tool: "reverse",
+        filter: "reverse",
         name: "Reverse",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
     },
     {
         id: 5,
-        tool: "threshold",
+        filter: "threshold",
         name: "Threshold",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
     },
     {
         id: 6,
-        tool: "grahp-cut",
+        filter: "grahp-cut",
         name: "Grahp Cut",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
     },
     {
         id: 7,
-        tool: "meanshift",
+        filter: "meanshift",
         name: "Meanshift",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
     },
     {
         id: 8,
-        tool: "kmean",
+        filter: "kmean",
         name: "Kmean",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwlYcLkXShDO3OpHYiXIXwPPa8LSiWg0hfsQ&usqp=CAU",
     },
@@ -75,7 +75,7 @@ const settings = {
 
 const ToolBar = ({ setIsLoading }) => {
     const dispatch = useDispatch();
-    const { tool } = useSelector((state) => state.tool);
+    const { filter } = useSelector((state) => state.filter);
     const dialog = useSelector((state) => state.dialog)
     const { imgUrl, imgName } = useSelector((state) => state.img);
 
@@ -99,7 +99,7 @@ const ToolBar = ({ setIsLoading }) => {
 
         const fetchData = async () => {
             setIsLoading(true);
-            if (tool === "hist") {
+            if (filter === "hist") {
                 await API.post("/point/hist", formData).then((response) => {
                     if (response.status === 200) {
                         dispatch({
@@ -109,13 +109,13 @@ const ToolBar = ({ setIsLoading }) => {
                         setIsLoading(false);
                     } else return;
                 });
-            } else if (tool === "original") {
+            } else if (filter === "original") {
                 dispatch({
                     type: IMG_CHANGE,
                     image: imgUrl,
                 });
                 setIsLoading(false);
-            } else if (tool === "blur") {
+            } else if (filter === "blur") {
                 await API.post("/filter/gaussian-blur", formData).then(
                     (response) => {
                         if (response.status === 200) {
@@ -127,7 +127,7 @@ const ToolBar = ({ setIsLoading }) => {
                         } else return;
                     }
                 );
-            } else if (tool === "reverse") {
+            } else if (filter === "reverse") {
                 await API.post("/point/reverse", formData).then((response) => {
                     if (response.status === 200) {
                         dispatch({
@@ -137,7 +137,7 @@ const ToolBar = ({ setIsLoading }) => {
                         setIsLoading(false);
                     } else return;
                 });
-            } else if (tool === "threshold") {
+            } else if (filter === "threshold") {
                 await API.post("/point/threshold", formData).then(
                     (response) => {
                         if (response.status === 200) {
@@ -149,7 +149,7 @@ const ToolBar = ({ setIsLoading }) => {
                         } else return;
                     }
                 );
-            } else if (tool === "grahp-cut") {
+            } else if (filter === "grahp-cut") {
                 await API.post("/segment/grahp-cut", formData).then(
                     (response) => {
                         if (response.status === 200) {
@@ -161,7 +161,7 @@ const ToolBar = ({ setIsLoading }) => {
                         } else return;
                     }
                 );
-            } else if (tool === "kmean") {
+            } else if (filter === "kmean") {
                 await API.post("/segment/kmean", formData).then(
                     (response) => {
                         if (response.status === 200) {
@@ -173,7 +173,7 @@ const ToolBar = ({ setIsLoading }) => {
                         } else return;
                     }
                 );
-            } else if (tool === "meanshift") {
+            } else if (filter === "meanshift") {
                 await API.post("/segment/meanshift", formData).then(
                     (response) => {
                         if (response.status === 200) {
@@ -190,7 +190,14 @@ const ToolBar = ({ setIsLoading }) => {
         };
 
         fetchData();
-    }, [tool]);
+    }, [filter]);
+
+    const handleClickFilter = (filter) => {
+        dispatch({
+            type: FILTER_CHANGE,
+            filter: filter,
+        });
+    };
 
     return (
         <>
@@ -208,11 +215,12 @@ const ToolBar = ({ setIsLoading }) => {
                     <Slider {...settings}>
                         {filterItems.map((item) => (
                             <Item
-                                key={item.tool}
-                                tool={item.tool}
+                                key={item.filter}
+                                tool={item.filter}
                                 img={item.img}
                                 name={item.name}
-                                isSelected={tool === item.tool}
+                                isSelected={filter === item.filter}
+                                onClick={handleClickFilter}
                             />
                         ))}
                     </Slider>

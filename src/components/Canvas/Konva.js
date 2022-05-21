@@ -7,9 +7,10 @@ import { ZOOM_VALUE_CHANGE } from "../../store/actions";
 
 const Konvas = ({ imageRef, layerEl, height, width }) => {
     const dispatch = useDispatch();
-    const { imgUrl, imgName, image: img } = useSelector((state) => state.img);
+    const { image: img } = useSelector((state) => state.img);
     const [image, setImage] = useState()
-    const { brighten, contrast, blur, hue, saturation, value } = useSelector((state) => state.value);
+    const { brighten, contrast, blur, hue, saturation, value, rotate } =
+        useSelector((state) => state.value);
     const { flipx, flipy } = useSelector((state) => state.flip);
     const [coordinates, setCoordinates] = useState({
         x: width / 2,
@@ -20,6 +21,7 @@ const Konvas = ({ imageRef, layerEl, height, width }) => {
         height: 0,
     });
     const [scale, setScale] = useState(1);
+    const { tool } = useSelector((state) => state.tool);
 
     useEffect(() => {
         const imgLoad = new window.Image();
@@ -88,7 +90,7 @@ const Konvas = ({ imageRef, layerEl, height, width }) => {
             onWheel={handleWheel}
         >
             <Layer ref={layerEl}>
-            <Image
+                <Image
                     draggable
                     ref={imageRef}
                     scaleY={flipx ? -1 : 1}
@@ -100,6 +102,7 @@ const Konvas = ({ imageRef, layerEl, height, width }) => {
                     offsetX={imageAttr.width / 2}
                     offsetY={imageAttr.height / 2}
                     image={image}
+                    rotation={rotate}
                     filters={[
                         Konva.Filters.Brighten,
                         Konva.Filters.Contrast,

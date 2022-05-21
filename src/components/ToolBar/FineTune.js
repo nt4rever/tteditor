@@ -12,7 +12,7 @@ import Slider from "@mui/material/Slider";
 import ItemFineTune from "./ItemFineTune.js";
 import { Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { FINETUNE_CHANGE, FINETUNE_VALUE_CHANGE } from "./../../store/actions";
+import { TOOL_CHANGE, FINETUNE_VALUE_CHANGE } from "./../../store/actions";
 import HSV from "./HSV.js";
 
 const finetunes = [
@@ -58,20 +58,20 @@ const finetunes = [
 const FineTune = () => {
     const dispatch = useDispatch();
     const [value, setValue] = React.useState(0);
-    const { finetune } = useSelector((state) => state.finetune);
+    const { tool } = useSelector((state) => state.tool);
     const { brighten, contrast, blur } = useSelector((state) => state.value);
     const handleChange = (event, newValue) => {
-        if (finetune === "blur") {
+        if (tool === "blur") {
             dispatch({
                 type: FINETUNE_VALUE_CHANGE,
                 blur: newValue,
             });
-        } else if (finetune === "brighten") {
+        } else if (tool === "brighten") {
             dispatch({
                 type: FINETUNE_VALUE_CHANGE,
                 brighten: newValue,
             });
-        } else if (finetune === "contrast") {
+        } else if (tool === "contrast") {
             dispatch({
                 type: FINETUNE_VALUE_CHANGE,
                 contrast: newValue,
@@ -79,19 +79,19 @@ const FineTune = () => {
         }
     };
     useEffect(() => {
-        if (finetune === "blur") {
+        if (tool === "blur") {
             setValue(blur);
-        } else if (finetune === "brighten") {
+        } else if (tool === "brighten") {
             setValue(brighten);
-        } else if (finetune === "contrast") {
+        } else if (tool === "contrast") {
             setValue(contrast);
         }
-    }, [finetune, brighten, contrast, blur]);
+    }, [tool, brighten, contrast, blur]);
 
     const handleClick = (tool) => {
         dispatch({
-            type: FINETUNE_CHANGE,
-            finetune: tool,
+            type: TOOL_CHANGE,
+            tool: tool,
         });
     };
 
@@ -100,7 +100,7 @@ const FineTune = () => {
             <div className="toolbar-options">
                 {finetunes.map(
                     (item) =>
-                        item.tool === finetune &&
+                        item.tool === tool &&
                         item.tool !== "hsv" && (
                             <Box key={item.tool} sx={{ width: 250 }}>
                                 <Stack
@@ -136,7 +136,7 @@ const FineTune = () => {
                             </Box>
                         )
                 )}
-                {finetune === "hsv" && <HSV />}
+                {tool === "hsv" && <HSV />}
             </div>
             <div className="finetune-wrapper">
                 {finetunes.map((item) => (
@@ -145,7 +145,7 @@ const FineTune = () => {
                         tool={item.tool}
                         icon={item.icon}
                         name={item.name}
-                        isSelected={finetune === item.tool}
+                        isSelected={tool === item.tool}
                         onClick={handleClick}
                     />
                 ))}
