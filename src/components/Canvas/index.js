@@ -8,6 +8,7 @@ import FineTune from "../ToolBar/FineTune.js";
 import { useSelector } from "react-redux";
 import Adjust from "./../ToolBar/Adjust";
 import Other from "../ToolBar/Other.js";
+import Draw from "../ToolBar/Draw.js";
 
 const Canvas = ({ imageRef, layerEl }) => {
     const canvasRef = useRef();
@@ -41,7 +42,7 @@ const Canvas = ({ imageRef, layerEl }) => {
                 {tab === "adjust" && <Adjust />}
                 {tab === "segment" && <Segment setIsLoading={setIsLoading} />}
                 {tab === "other" && <Other setIsLoading={setIsLoading} />}
-                {/* {tab === "draw" && <Draw />} */}
+                {tab === "draw" && <Draw />}
             </div>
         </div>
     );

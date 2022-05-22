@@ -10,7 +10,8 @@ const Item = ({ filter, img, name, isSelected, onClick }) => {
     return (
         <div className="item" onClick={handleClick} >
             <div aria-selected={isSelected}>
-                <img src={img} alt=""/>
+                {/* <img src={img} alt=""/> */}
+                <img src={process.env.PUBLIC_URL + img} alt=""/>
                 <label>{name}</label>
             </div>
         </div>
