@@ -80,8 +80,8 @@ const HSV = () => {
                         size="small"
                         aria-label="Small"
                         min={-2}
-                        max={10}
-                        step={0.5}
+                        max={3}
+                        step={0.01}
                         value={saturation}
                         onChange={handleSaturatioChange}
                         sx={{
@@ -111,7 +111,7 @@ const HSV = () => {
                             color: '#fff',
                         }}
                     >
-                        Value
+                        Bright 
                     </Typography>
                     <Slider
                         aria-labelledby="value-slider"
@@ -119,7 +119,7 @@ const HSV = () => {
                         aria-label="Small"
                         min={-2}
                         max={2}
-                        step={0.1}
+                        step={0.01}
                         value={value}
                         onChange={handleValueChange}
                         sx={{

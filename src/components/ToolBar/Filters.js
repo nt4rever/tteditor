@@ -44,17 +44,10 @@ const filterItems = [
     },
     {
         id: 5,
-        filter: "sobelx",
-        path: "/filter/sobelx",
-        name: "Sobel X",
+        filter: "sobel",
+        path: "/filter/sobel",
+        name: "Sobel",
         img: "/assets/filter/sobelx.png",
-    },
-    {
-        id: 6,
-        filter: "sobely",
-        path: "/filter/sobely",
-        name: "Sobel Y",
-        img: "/assets/filter/sobely.png",
     },
     {
         id: 7,
@@ -72,9 +65,9 @@ const filterItems = [
     },
     {
         id: 9,
-        filter: "winner",
-        path: "/special/winner",
-        name: "Winner",
+        filter: "winter",
+        path: "/special/winter",
+        name: "Winter",
         img: "/assets/filter/blur.png",
     },
     {
@@ -100,7 +93,7 @@ const filterItems = [
     },
 ];
 
-const filters = ["hist", "blur", "laplacian", "sobelx", "sobely", "HDR", "summer", "winner", "sharpen", "sepia", "pencil_sketch_grey"]
+const filters = ["hist", "blur", "laplacian", "sobel", "HDR", "summer", "winter", "sharpen", "sepia", "pencil_sketch_grey"]
 
 const settings = {
     dots: false,

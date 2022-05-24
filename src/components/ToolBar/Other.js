@@ -44,9 +44,9 @@ const filterItems = [
     },
     {
         id: 5,
-        filter: "log",
-        name: "Log",
-        path: "/point/log",
+        filter: "loc_thong_thap",
+        name: "Loc thong thap",
+        path: "/restoration/loc-thong-thap",
         img: "/assets/other/log.png",
     },
     {
@@ -56,10 +56,10 @@ const filterItems = [
         path: "/point/log",
         img: "/assets/other/log.png",
     },
-    
+
 ];
 
-const segment = ["reverse", "log", "threshold"];
+const segment = ["reverse", "log", "threshold", "loc_thong_thap"];
 
 const settings = {
     dots: false,
