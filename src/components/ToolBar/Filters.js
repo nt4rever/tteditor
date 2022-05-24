@@ -85,15 +85,29 @@ const filterItems = [
         img: "/assets/filter/sepia.png",
     },
     {
-        id: 11,
+        id: 12,
         filter: "pencil_sketch_grey",
         path: "/special/pencil-sketch-grey",
         name: "Pencil sketch grey",
         img: "/assets/filter/pencil.png",
     },
+    {
+        id: 13,
+        filter: "gotham",
+        path: "/special/gotham",
+        name: "Gotham",
+        img: "/assets/filter/gotham.png",
+    },
+    {
+        id: 14,
+        filter: "stylization",
+        path: "/special/stylization",
+        name: "Stylization",
+        img: "/assets/filter/stylization.png",
+    },
 ];
 
-const filters = ["hist", "blur", "laplacian", "sobel", "HDR", "summer", "winter", "sharpen", "sepia", "pencil_sketch_grey"]
+const filters = ["hist", "blur", "laplacian", "sobel", "HDR", "summer", "winter", "sharpen", "sepia", "pencil_sketch_grey", "gotham", "stylization"]
 
 const settings = {
     dots: false,
