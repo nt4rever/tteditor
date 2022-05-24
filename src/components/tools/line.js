@@ -7,7 +7,7 @@ export const addLine = (stage, layer, mode = "brush") => {
         isPaint = true;
         let pos = stage.getPointerPosition();
         lastLine = new Konva.Line({
-            stroke: mode === "brush" ? "red" : "white",
+            stroke: mode === "brush" ? "#7F8C8D" : "white",
             strokeWidth: mode === "brush" ? 5 : 20,
             globalCompositeOperation:
                 mode === "brush" ? "source-over" : "destination-out",

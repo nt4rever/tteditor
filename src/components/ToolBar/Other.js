@@ -44,28 +44,28 @@ const filterItems = [
     },
     {
         id: 5,
-        filter: "loc_thong_thap",
-        name: "Loc thong thap",
-        path: "/restoration/loc-thong-thap",
+        filter: "sharp",
+        name: "Sharp",
+        path: "/restoration/sharp",
         img: "/assets/other/log.png",
     },
     {
-        id: 6,
-        filter: "log",
-        name: "Log",
-        path: "/point/log",
+        id: 5,
+        filter: "sharp",
+        name: "Sharp",
+        path: "/restoration/sharp",
         img: "/assets/other/log.png",
     },
 
 ];
 
-const segment = ["reverse", "log", "threshold", "loc_thong_thap"];
+const segment = ["reverse", "log", "threshold", "sharp"];
 
 const settings = {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
 };
 
@@ -129,7 +129,7 @@ const Other = ({ setIsLoading }) => {
     return (
         <>
             <Grid container spacing={2}>
-                <Grid item xs={3}>
+                <Grid item xs={2}>
                     <div className="config-filter">
                         <IconButton onClick={handleClick} sx={{
                             color: '#fff'
@@ -138,7 +138,7 @@ const Other = ({ setIsLoading }) => {
                         </IconButton>
                     </div>
                 </Grid>
-                <Grid item xs={9}>
+                <Grid item xs={10}>
                     <Slider {...settings}>
                         {filterItems.map((item) => (
                             <Item

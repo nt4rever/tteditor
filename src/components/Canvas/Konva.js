@@ -66,7 +66,7 @@ const Konvas = ({ imageRef, layerEl, height, width }) => {
             y: y,
             width: 100,
             height: 100,
-            fill: "red",
+            fill: "#E8DAEF",
             id: `circ${circles.length + 1}`,
         };
         const circs = circles.concat([circ]);
@@ -81,7 +81,7 @@ const Konvas = ({ imageRef, layerEl, height, width }) => {
             y: y,
             width: 100,
             height: 100,
-            fill: "red",
+            fill: "#82E0AA",
             id: `rect${rectangles.length + 1}`,
         };
         const rects = rectangles.concat([rect]);
@@ -99,7 +99,7 @@ const Konvas = ({ imageRef, layerEl, height, width }) => {
             outerRadius: 40,
             width: 100,
             height: 100,
-            fill: "red",
+            fill: "#F9E79F",
             id: `star${stars.length + 1}`,
         };
         const star = stars.concat([s]);

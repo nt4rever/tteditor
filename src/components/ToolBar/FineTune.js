@@ -45,14 +45,14 @@ const finetunes = [
         max: 10,
         step: 1,
     },
-    {
-        icon: <SVGWarmth />,
-        tool: "warmth",
-        name: "Warmth",
-        min: 0,
-        max: 100,
-        step: 1,
-    },
+    // {
+    //     icon: <SVGWarmth />,
+    //     tool: "warmth",
+    //     name: "Warmth",
+    //     min: 0,
+    //     max: 100,
+    //     step: 1,
+    // },
 ];
 
 const FineTune = () => {
